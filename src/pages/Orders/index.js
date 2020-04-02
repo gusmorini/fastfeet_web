@@ -98,7 +98,7 @@ const orders = [
   }
 ];
 
-export default function Dashboard() {
+export default function Orders() {
   return (
     <>
       <Title>Gerenciando encomendas</Title>
