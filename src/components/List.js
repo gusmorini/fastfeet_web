@@ -1,12 +1,14 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-export function ListContainer({ children }) {
-  return <ListContainerContant>{children}</ListContainerContant>;
+export function ListContainer(props) {
+  return (
+    <ListContainerContant {...props}>{props.children}</ListContainerContant>
+  );
 }
 
-export function ListRow({ children }) {
-  return <ListRowContent>{children}</ListRowContent>;
+export function ListRow(props) {
+  return <ListRowContent {...props}>{props.children}</ListRowContent>;
 }
 
 export function ListItem(props) {
@@ -27,6 +29,7 @@ const ListRowContent = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-transform: capitalize;
 
   background: #ffffff;
   border-radius: 4px;
@@ -47,11 +50,13 @@ const ListRowContent = styled.li`
 
 const ListItemContent = styled.span`
   width: 100%;
-  text-align: left;
   padding: 0 10px;
 
-  display: flex;
-  align-items: center;
+  ${props =>
+    props.upper &&
+    css`
+      text-transform: uppercase;
+    `}
 
   ${props =>
     props.size &&
@@ -64,13 +69,22 @@ const ListItemContent = styled.span`
     css`
       text-align: ${props.align};
     `}
+  
+  ${props =>
+    props.flex &&
+    css`
+      display: flex;
+      align-items: center;
+    `}
+
 `;
 
 const Avatar = styled.img`
   border-radius: 50%;
   width: 25px;
   height: 25px;
-  margin-right: 5px;
+  margin-right: 10px;
+  background-color: #e1e1e1e1;
 `;
 
 const StatusContent = styled.span`

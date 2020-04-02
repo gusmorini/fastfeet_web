@@ -15,13 +15,15 @@ import SearchInput from "../../components/SearchInput";
 const orders = [
   {
     id: 1,
-    product: "Headset HyperX",
+    product: "Playstation 4 Slim",
     canceled_at: null,
-    start_date: "0000-00-00",
+    start_date: null,
     end_date: null,
     recipient: {
       id: 1,
-      name: "Gustavo Morini"
+      name: "Gustavo Morini",
+      city: "maria helena",
+      state: "pr"
     },
     deliveryman: {
       id: 1,
@@ -35,17 +37,62 @@ const orders = [
     id: 2,
     product: "Headset HyperX",
     canceled_at: null,
-    start_date: null,
-    end_date: "0000-00-00",
+    start_date: "null",
+    end_date: null,
     recipient: {
       id: 1,
-      name: "Gustavo Morini"
+      name: "Gustavo Morini",
+      city: "maria helena",
+      state: "pr"
     },
     deliveryman: {
       id: 1,
       name: "Carlito da silva",
       email: "carlitosilva@fastfeet.com",
-      avatar: null
+      avatar:
+        "https://lh3.googleusercontent.com/proxy/GHeS3-3CzBKPOaumzwGGarPd803QW2KxN3oigEy-KVhpMAlTKJrPXfWAbXaAwB70p29yFKSPomIk1R_HliTYyAEVPsUoBk1vih0CZw4eiCAUKIcovkv1fRMUO25AA0Q-MLCG9E_7c6_wXSspmWtv4drQKcQA0GcW5QVaSkM_zxESkEL0wclIH9SpwA"
+    },
+    signature: null
+  },
+  {
+    id: 3,
+    product: "Cadeira Gamer Pichau",
+    canceled_at: null,
+    start_date: "null",
+    end_date: "null",
+    recipient: {
+      id: 2,
+      name: "Leonardo Morini",
+      city: "maria helena",
+      state: "pr"
+    },
+    deliveryman: {
+      id: 1,
+      name: "Carlito da silva",
+      email: "carlitosilva@fastfeet.com",
+      avatar:
+        "https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/batman-icon.png"
+    },
+    signature: null
+  },
+  {
+    id: 4,
+    product: "Coleção Harry Potter",
+    canceled_at: "null",
+    start_date: null,
+    end_date: null,
+    recipient: {
+      id: 2,
+      name: "Leonardo Morini",
+      city: "maria helena",
+      state: "pr"
+    },
+    deliveryman: {
+      id: 1,
+      name: "Carlito da silva",
+      email: "carlitosilva@fastfeet.com",
+      avatar:
+        "https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/batman-icon.png"
     },
     signature: null
   }
@@ -66,7 +113,7 @@ export default function Dashboard() {
           <ListItem>Destinatário</ListItem>
           <ListItem>Entregador</ListItem>
           <ListItem>Cidade</ListItem>
-          <ListItem>Estado</ListItem>
+          <ListItem align="center">Estado</ListItem>
           <ListItem size="700" align="center">
             Status
           </ListItem>
@@ -78,12 +125,21 @@ export default function Dashboard() {
         {orders.length > 0 &&
           orders.map(order => {
             let status = "pendente";
+            let url_avatar = "/img/default-avatar.jpg";
+
+            if (!!order.deliveryman.avatar) {
+              url_avatar = order.deliveryman.avatar;
+            }
 
             if (!!order.canceled_at) {
               status = "cancelada";
-            } else if (!!order.start_date) {
+            } else if (
+              !!order.start_date &&
+              !order.end_date &&
+              !order.canceled_at
+            ) {
               status = "retirada";
-            } else if (!!order.end_date) {
+            } else if (!!order.end_date && !order.canceled_at) {
               status = "entregue";
             }
 
@@ -91,12 +147,14 @@ export default function Dashboard() {
               <ListRow>
                 <ListItem size="300">{order.id}</ListItem>
                 <ListItem>{order.recipient.name}</ListItem>
-                <ListItem>
-                  <ListAvatar src="/img/default-avatar.jpg"></ListAvatar>
+                <ListItem flex>
+                  <ListAvatar src={url_avatar}></ListAvatar>
                   {order.deliveryman.name}
                 </ListItem>
-                <ListItem>Rio do Sul</ListItem>
-                <ListItem>Santa Catarina</ListItem>
+                <ListItem>{order.recipient.city}</ListItem>
+                <ListItem align="center" upper>
+                  {order.recipient.state}
+                </ListItem>
                 <ListItem size="700" align="center">
                   <Status type={status}>{status}</Status>
                 </ListItem>
