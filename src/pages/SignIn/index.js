@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { darken } from "polished";
 
 export default function SignIn() {
   return (
@@ -57,6 +58,12 @@ const Container = styled.div`
       line-height: 45px;
       color: #ffffff;
       font-size: 16px;
+      font-weight: bold;
+      transition: 0.5s;
+
+      &:hover {
+        background: ${darken(0.05, "#7d40e7")};
+      }
     }
   }
 `;
