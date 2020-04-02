@@ -1,8 +1,4 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { darken, lighten } from "polished";
-
-import { Link } from "react-router-dom";
 
 import {
   ListContainer,
