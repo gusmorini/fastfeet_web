@@ -17,5 +17,9 @@ AuthLayout.propTypes = {
 
 const Wrapper = styled.div`
   height: 100%;
-  background: gray;
+  background: #7d40e7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
