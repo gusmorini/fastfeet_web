@@ -1,22 +1,8 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { darken } from "polished";
-
-const itens = [
-  {
-    to: "/visualizar",
-    name: "Visualizar"
-  },
-  {
-    to: "/editar",
-    name: "Editar"
-  },
-  {
-    to: "/excluir",
-    name: "Excluir"
-  }
-];
+import { FaRegEye, FaPen, FaTrashAlt, FaEllipsisH } from "react-icons/fa";
 
 export default function Actions(props) {
   const [visible, setVisible] = useState(false);
@@ -27,11 +13,22 @@ export default function Actions(props) {
 
   return (
     <ActionsContent>
-      <ActionsBtn onClick={handleToogleVisible}>{props.children}</ActionsBtn>
+      <ActionsBtn visible={visible} onClick={handleToogleVisible}>
+        <FaEllipsisH />
+      </ActionsBtn>
       <ActionsList visible={visible}>
-        {itens.map(item => (
-          <ActionsItem to={item.to}>{item.name}</ActionsItem>
-        ))}
+        <ActionsItem to={`/visualizar/${props.id}`}>
+          <FaRegEye color="#8E5BE8" />
+          visualizar
+        </ActionsItem>
+        <ActionsItem to={`/editar/${props.id}`}>
+          <FaPen color="#4D85EE" />
+          editar
+        </ActionsItem>
+        <ActionsItem to={`/excluir/${props.id}`}>
+          <FaTrashAlt color="#DE3B3B" />
+          excluir
+        </ActionsItem>
       </ActionsList>
     </ActionsContent>
   );
@@ -45,6 +42,16 @@ const ActionsBtn = styled.button`
   border: 0;
   background: none;
   font-weight: bold;
+  padding-top: 5px;
+  transition: all 300ms;
+  color: #c6c6c6;
+
+  ${props =>
+    props.visible &&
+    css`
+      color: #7d40e7;
+      transform: rotate(90deg);
+    `}
 `;
 
 const ActionsList = styled.div`
@@ -56,37 +63,40 @@ const ActionsList = styled.div`
   border-radius: 4px;
   padding: 20px 10px;
   box-shadow: 0px 0px 2px #00000026;
-  transition: 0.5s;
   z-index: 9000;
 
   display: ${props => (props.visible ? "flex" : "none")};
-  align-items: center;
+
+  align-items: flex-start;
   flex-direction: column;
   justify-content: center;
 
   &::before {
-    content: "▲";
-    font-size: 30px;
-    color: #fff;
+    content: "";
     position: absolute;
-    left: calc(50% - 15px);
-    top: -20px;
-    /* text-shadow: 0px 0px 2px #00000026; */
-
-    /* border-left: 10px solid transparent;
+    left: calc(50% - 10px);
+    top: -10px;
+    text-shadow: 0px 0px 2px #00000026;
+    border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid #fff; */
+    border-bottom: 10px solid #fff;
   }
 `;
 
 const ActionsItem = styled(Link)`
   color: #999999;
   font-size: 16px;
-  width: 100%;
   border-bottom: 1px solid #eeeeee;
   padding-bottom: 5px;
   margin-bottom: 5px;
   transition: 0.5s;
+  text-align: left;
+
+  width: 100%;
+
+  svg {
+    margin-right: 10px;
+  }
 
   &:hover {
     color: ${darken(0.1, "#999999")};

@@ -1,4 +1,5 @@
 import React from "react";
+import { FaRegEye, FaPen, FaTrashAlt } from "react-icons/fa";
 
 import {
   ListContainer,
@@ -160,7 +161,7 @@ export default function Orders() {
                   <Status type={status}>{status}</Status>
                 </ListItem>
                 <ListItem size="300" align="center">
-                  <Actions>...</Actions>
+                  <Actions id={order.id}>...</Actions>
                 </ListItem>
               </ListRow>
             );
