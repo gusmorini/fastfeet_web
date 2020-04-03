@@ -11,6 +11,7 @@ import { SubMenu } from "../../components/SubMenu";
 import Title from "../../components/Title";
 import Button from "../../components/Button";
 import SearchInput from "../../components/SearchInput";
+import Actions from "../../components/Actions";
 
 const orders = [
   {
@@ -49,8 +50,7 @@ const orders = [
       id: 1,
       name: "Carlito da silva",
       email: "carlitosilva@fastfeet.com",
-      avatar:
-        "https://lh3.googleusercontent.com/proxy/GHeS3-3CzBKPOaumzwGGarPd803QW2KxN3oigEy-KVhpMAlTKJrPXfWAbXaAwB70p29yFKSPomIk1R_HliTYyAEVPsUoBk1vih0CZw4eiCAUKIcovkv1fRMUO25AA0Q-MLCG9E_7c6_wXSspmWtv4drQKcQA0GcW5QVaSkM_zxESkEL0wclIH9SpwA"
+      avatar: null
     },
     signature: null
   },
@@ -104,6 +104,7 @@ export default function Orders() {
       <Title>Gerenciando encomendas</Title>
       <SubMenu>
         <SearchInput placeholder="Buscar por encomendas"></SearchInput>
+
         <Button to="/">+ cadastrar</Button>
       </SubMenu>
 
@@ -159,7 +160,7 @@ export default function Orders() {
                   <Status type={status}>{status}</Status>
                 </ListItem>
                 <ListItem size="300" align="center">
-                  ...
+                  <Actions>...</Actions>
                 </ListItem>
               </ListRow>
             );
