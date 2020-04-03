@@ -8,11 +8,13 @@ import {
   ListAvatar,
   Status
 } from "../../components/List";
+
 import { SubMenu } from "../../components/SubMenu";
 import Title from "../../components/Title";
 import Button from "../../components/Button";
 import SearchInput from "../../components/SearchInput";
-import Actions from "../../components/Actions";
+
+import Actions, { ActionsItem } from "../../components/Actions";
 
 const orders = [
   {
@@ -161,7 +163,20 @@ export default function Orders() {
                   <Status type={status}>{status}</Status>
                 </ListItem>
                 <ListItem size="300" align="center">
-                  <Actions id={order.id}>...</Actions>
+                  <Actions>
+                    <ActionsItem to={`/visualizar/${order.id}`}>
+                      <FaRegEye color="#8E5BE8" />
+                      visualizar
+                    </ActionsItem>
+                    <ActionsItem to={`/editar/${order.id}`}>
+                      <FaPen color="#4D85EE" />
+                      editar
+                    </ActionsItem>
+                    <ActionsItem to={`/excluir/${order.id}`}>
+                      <FaTrashAlt color="#DE3B3B" />
+                      excluir
+                    </ActionsItem>
+                  </Actions>
                 </ListItem>
               </ListRow>
             );

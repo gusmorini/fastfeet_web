@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { darken } from "polished";
-import { FaRegEye, FaPen, FaTrashAlt, FaEllipsisH } from "react-icons/fa";
+import { FaEllipsisH } from "react-icons/fa";
 
 export default function Actions(props) {
   const [visible, setVisible] = useState(false);
@@ -16,20 +16,7 @@ export default function Actions(props) {
       <ActionsBtn visible={visible} onClick={handleToogleVisible}>
         <FaEllipsisH />
       </ActionsBtn>
-      <ActionsList visible={visible}>
-        <ActionsItem to={`/visualizar/${props.id}`}>
-          <FaRegEye color="#8E5BE8" />
-          visualizar
-        </ActionsItem>
-        <ActionsItem to={`/editar/${props.id}`}>
-          <FaPen color="#4D85EE" />
-          editar
-        </ActionsItem>
-        <ActionsItem to={`/excluir/${props.id}`}>
-          <FaTrashAlt color="#DE3B3B" />
-          excluir
-        </ActionsItem>
-      </ActionsList>
+      <ActionsList visible={visible}>{props.children}</ActionsList>
     </ActionsContent>
   );
 }
@@ -83,7 +70,7 @@ const ActionsList = styled.div`
   }
 `;
 
-const ActionsItem = styled(Link)`
+export const ActionsItem = styled(Link)`
   color: #999999;
   font-size: 16px;
   border-bottom: 1px solid #eeeeee;
