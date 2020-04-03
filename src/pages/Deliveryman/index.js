@@ -12,7 +12,7 @@ import { FaTrashAlt, FaPen } from "react-icons/fa";
 
 import { SubMenu } from "../../components/SubMenu";
 import Title from "../../components/Title";
-import Button from "../../components/Button";
+import { AddButton } from "../../components/Button";
 import SearchInput from "../../components/SearchInput";
 
 import Actions, { ActionsItem } from "../../components/Actions";
@@ -45,7 +45,7 @@ export default function Deliveryman() {
       <SubMenu>
         <SearchInput placeholder="Buscar por entregadores"></SearchInput>
 
-        <Button to="/">+ cadastrar</Button>
+        <AddButton to="/">cadastrar</AddButton>
       </SubMenu>
 
       <ListContainer>
