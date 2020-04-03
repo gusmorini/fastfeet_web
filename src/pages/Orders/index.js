@@ -121,7 +121,7 @@ export default function Orders() {
           <ListItem size="700" align="center">
             Status
           </ListItem>
-          <ListItem size="300" align="right">
+          <ListItem size="300" align="center">
             Ações
           </ListItem>
         </ListRow>

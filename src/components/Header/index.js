@@ -9,16 +9,16 @@ export default function Header() {
         <Logo to="/">fastfeet</Logo>
         <Menu>
           <ItemMenu active>
-            <Link to="/encomendas">encomendas</Link>
+            <Link to="/orders">encomendas</Link>
           </ItemMenu>
           <ItemMenu>
-            <Link to="/entregadores">entregadores</Link>
+            <Link to="/deliveryman">entregadores</Link>
           </ItemMenu>
           <ItemMenu>
-            <Link to="/destinatarios">destinatários</Link>
+            <Link to="/">destinatários</Link>
           </ItemMenu>
           <ItemMenu>
-            <Link to="/problemas">problemas</Link>
+            <Link to="/">problemas</Link>
           </ItemMenu>
         </Menu>
         <Usuario>

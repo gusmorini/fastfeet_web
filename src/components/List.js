@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 
 export function ListContainer(props) {
   return (
@@ -18,6 +19,10 @@ export function ListItem(props) {
 export function ListAvatar(props) {
   return <Avatar {...props}>{props.children}</Avatar>;
 }
+
+ListAvatar.defaultProps = {
+  src: "/img/default-avatar.jpg"
+};
 
 export function Status(props) {
   return <StatusContent {...props}>{props.children}</StatusContent>;
@@ -57,6 +62,12 @@ const ListItemContent = styled.span`
     css`
       text-transform: uppercase;
     `}
+
+  ${props =>
+    props.low &&
+    css`
+      text-transform: lowercase;
+    `};
 
   ${props =>
     props.size &&
