@@ -1,25 +1,39 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
+  const location = useLocation();
+
+  const menu = [
+    {
+      to: "/orders",
+      name: "encomendas"
+    },
+    {
+      to: "/deliveryman",
+      name: "entregadores"
+    },
+    {
+      to: "/recipient",
+      name: "destinatários"
+    },
+    {
+      to: "/problems",
+      name: "problemas"
+    }
+  ];
+
   return (
     <Container>
       <Content>
         <Logo to="/">fastfeet</Logo>
         <Menu>
-          <ItemMenu active>
-            <Link to="/orders">encomendas</Link>
-          </ItemMenu>
-          <ItemMenu>
-            <Link to="/deliveryman">entregadores</Link>
-          </ItemMenu>
-          <ItemMenu>
-            <Link to="/">destinatários</Link>
-          </ItemMenu>
-          <ItemMenu>
-            <Link to="/">problemas</Link>
-          </ItemMenu>
+          {menu.map(m => (
+            <ItemMenu index={m.to} active={m.to === location.pathname && true}>
+              <Link to={m.to}>{m.name}</Link>
+            </ItemMenu>
+          ))}
         </Menu>
         <Usuario>
           <strong>
