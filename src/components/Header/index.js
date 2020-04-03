@@ -2,34 +2,38 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 
+import LogoFastfeet from "../../components/Logo";
+
 export default function Header() {
   const location = useLocation();
 
   const menu = [
     {
       to: "/orders",
-      name: "encomendas"
+      name: "encomendas",
     },
     {
       to: "/deliveryman",
-      name: "entregadores"
+      name: "entregadores",
     },
     {
       to: "/recipient",
-      name: "destinatários"
+      name: "destinatários",
     },
     {
       to: "/problems",
-      name: "problemas"
-    }
+      name: "problemas",
+    },
   ];
 
   return (
     <Container>
       <Content>
-        <Logo to="/">fastfeet</Logo>
+        <Logo to="/">
+          <LogoFastfeet medium />
+        </Logo>
         <Menu>
-          {menu.map(m => (
+          {menu.map((m) => (
             <ItemMenu index={m.to} active={m.to === location.pathname && true}>
               <Link to={m.to}>{m.name}</Link>
             </ItemMenu>
@@ -77,6 +81,16 @@ const Logo = styled(Link)`
   border-right: 1px solid #dddddd;
   padding-right: 20px;
   margin-right: 20px;
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 45px;
+    margin-right: 5px;
+  }
 `;
 
 const Menu = styled.ul`
@@ -94,7 +108,7 @@ const ItemMenu = styled.li`
     color: #999999;
   }
 
-  ${props =>
+  ${(props) =>
     props.active &&
     css`
       a {

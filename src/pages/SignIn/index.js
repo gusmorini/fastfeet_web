@@ -2,10 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { darken } from "polished";
 
+import Logo from "../../components/Logo";
+import Title from "../../components/Title";
+
 export default function SignIn() {
   return (
     <Container>
-      <Title>Fastfeet</Title>
+      <Title>
+        <Logo />
+      </Title>
 
       <form action="#">
         <label htmlFor="">seu e-mail</label>
@@ -68,10 +73,10 @@ const Container = styled.div`
   }
 `;
 
-const Title = styled.h1`
-  text-transform: uppercase;
-  text-align: center;
-  color: #7d40e7;
-  font-style: italic;
-  margin-bottom: 20px;
-`;
+// const Title = styled.h1`
+//   text-transform: uppercase;
+//   text-align: center;
+//   color: #7d40e7;
+//   font-style: italic;
+//   margin-bottom: 20px;
+// `;
