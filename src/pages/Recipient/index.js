@@ -1,11 +1,12 @@
 import React from "react";
+import stateUF from "../../utils/statesUF";
 
 import {
   ListContainer,
   ListRow,
   ListItem,
   ListAvatar,
-  Status
+  Status,
 } from "../../components/List";
 
 import { FaTrashAlt, FaPen } from "react-icons/fa";
@@ -28,7 +29,7 @@ const recipient = [
     city: "maria helena",
     zip_code: "87480000",
     createdAt: "2020-04-01T20:54:57.000Z",
-    updatedAt: "2020-04-01T20:55:08.000Z"
+    updatedAt: "2020-04-01T20:55:08.000Z",
   },
   {
     id: 2,
@@ -40,8 +41,8 @@ const recipient = [
     city: "maria helena",
     zip_code: "87480000",
     createdAt: "2020-04-01T20:55:02.000Z",
-    updatedAt: "2020-04-01T20:55:02.000Z"
-  }
+    updatedAt: "2020-04-01T20:55:02.000Z",
+  },
 ];
 
 export default function Recipient() {
@@ -65,8 +66,9 @@ export default function Recipient() {
         </ListRow>
 
         {recipient.length > 0 &&
-          recipient.map(item => {
-            const end = `${item.street}, ${item.number}, ${item.city} - ${item.state}`;
+          recipient.map((item) => {
+            const estado = stateUF(item.state);
+            const end = `${item.street}, ${item.number}, ${item.city} - ${estado.nome}`;
 
             return (
               <ListRow>

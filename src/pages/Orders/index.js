@@ -6,7 +6,7 @@ import {
   ListRow,
   ListItem,
   ListAvatar,
-  Status
+  Status,
 } from "../../components/List";
 
 import { SubMenu } from "../../components/SubMenu";
@@ -15,6 +15,8 @@ import { AddButton } from "../../components/Button";
 import SearchInput from "../../components/SearchInput";
 
 import Actions, { ActionsItem } from "../../components/Actions";
+
+import stateUF from "../../utils/statesUF";
 
 const orders = [
   {
@@ -27,15 +29,15 @@ const orders = [
       id: 1,
       name: "Gustavo Morini",
       city: "maria helena",
-      state: "pr"
+      state: "pr",
     },
     deliveryman: {
       id: 1,
       name: "Carlito da silva",
       email: "carlitosilva@fastfeet.com",
-      avatar: null
+      avatar: null,
     },
-    signature: null
+    signature: null,
   },
   {
     id: 2,
@@ -47,15 +49,15 @@ const orders = [
       id: 1,
       name: "Gustavo Morini",
       city: "maria helena",
-      state: "pr"
+      state: "pr",
     },
     deliveryman: {
       id: 1,
       name: "Carlito da silva",
       email: "carlitosilva@fastfeet.com",
-      avatar: null
+      avatar: null,
     },
-    signature: null
+    signature: null,
   },
   {
     id: 3,
@@ -67,16 +69,16 @@ const orders = [
       id: 2,
       name: "Leonardo Morini",
       city: "maria helena",
-      state: "pr"
+      state: "pr",
     },
     deliveryman: {
       id: 1,
       name: "Carlito da silva",
       email: "carlitosilva@fastfeet.com",
       avatar:
-        "https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/batman-icon.png"
+        "https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/batman-icon.png",
     },
-    signature: null
+    signature: null,
   },
   {
     id: 4,
@@ -88,17 +90,17 @@ const orders = [
       id: 2,
       name: "Leonardo Morini",
       city: "maria helena",
-      state: "pr"
+      state: "pr",
     },
     deliveryman: {
       id: 1,
       name: "Carlito da silva",
       email: "carlitosilva@fastfeet.com",
       avatar:
-        "https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/batman-icon.png"
+        "https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/batman-icon.png",
     },
-    signature: null
-  }
+    signature: null,
+  },
 ];
 
 export default function Orders() {
@@ -118,7 +120,7 @@ export default function Orders() {
           <ListItem>Entregador</ListItem>
           <ListItem>Cidade</ListItem>
           <ListItem align="center">Estado</ListItem>
-          <ListItem size="700" align="center">
+          <ListItem size="800" align="center">
             Status
           </ListItem>
           <ListItem size="300" align="center">
@@ -127,9 +129,13 @@ export default function Orders() {
         </ListRow>
 
         {orders.length > 0 &&
-          orders.map(order => {
+          orders.map((order) => {
             let status = "pendente";
             let url_avatar = "/img/default-avatar.jpg";
+
+            console.log(stateUF("pr"));
+
+            const estado = stateUF(order.recipient.state);
 
             if (!!order.deliveryman.avatar) {
               url_avatar = order.deliveryman.avatar;
@@ -156,10 +162,8 @@ export default function Orders() {
                   {order.deliveryman.name}
                 </ListItem>
                 <ListItem>{order.recipient.city}</ListItem>
-                <ListItem align="center" upper>
-                  {order.recipient.state}
-                </ListItem>
-                <ListItem size="700" align="center">
+                <ListItem align="center">{estado.nome}</ListItem>
+                <ListItem size="800" align="center">
                   <Status type={status}>{status}</Status>
                 </ListItem>
                 <ListItem size="300" align="center">
