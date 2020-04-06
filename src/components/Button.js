@@ -1,8 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { darken } from "polished";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaCheck, FaChevronLeft } from "react-icons/fa";
 
 export default function Button(props) {
   return <FastButton {...props}>{props.children}</FastButton>;
@@ -17,8 +17,26 @@ export function AddButton(props) {
   );
 }
 
+export function SaveButton(props) {
+  return (
+    <FastButton {...props}>
+      <FaCheck />
+      {props.children}
+    </FastButton>
+  );
+}
+
+export function ReturnButton(props) {
+  return (
+    <FastButton background="#CCCCCC" {...props}>
+      <FaChevronLeft />
+      {props.children}
+    </FastButton>
+  );
+}
+
 const FastButton = styled(Link)`
-  background: #7d40e7;
+  background: ${(props) => (props.background ? props.background : "#7d40e7")};
   border: 0;
   border-radius: 4px;
   color: #fff;
@@ -36,6 +54,13 @@ const FastButton = styled(Link)`
   }
 
   &:hover {
-    background: ${darken(0.05, "#7d40e7")};
+    ${(props) =>
+      props.background
+        ? css`
+            background: ${darken(0.05, `${props.background}`)};
+          `
+        : css`
+            background: ${darken(0.05, "#7d40e7")};
+          `}
   }
 `;
