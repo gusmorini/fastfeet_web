@@ -5,7 +5,7 @@ import {
   ListRow,
   ListItem,
   ListAvatar,
-  Status
+  Status,
 } from "../../components/List";
 
 import { FaTrashAlt, FaPen } from "react-icons/fa";
@@ -22,20 +22,20 @@ const deliveryman = [
     id: 1,
     name: "Carlito da silva",
     email: "carlitosilva@fastfeet.com",
-    avatar: null
+    avatar: null,
   },
   {
     id: 2,
     name: "Carlito da silva",
     email: "carlitosilva@fastfeet.com",
-    avatar: null
+    avatar: null,
   },
   {
     id: 3,
     name: "Carlito da silva",
     email: "carlitosilva@fastfeet.com",
-    avatar: null
-  }
+    avatar: null,
+  },
 ];
 
 export default function Deliveryman() {
@@ -45,7 +45,7 @@ export default function Deliveryman() {
       <SubMenu>
         <SearchInput placeholder="Buscar por entregadores"></SearchInput>
 
-        <AddButton to="/">cadastrar</AddButton>
+        <AddButton to="/deliveryman_add">cadastrar</AddButton>
       </SubMenu>
 
       <ListContainer>
@@ -60,7 +60,7 @@ export default function Deliveryman() {
         </ListRow>
 
         {deliveryman.length > 0 &&
-          deliveryman.map(del => {
+          deliveryman.map((del) => {
             return (
               <ListRow>
                 <ListItem size="100">{del.id}</ListItem>

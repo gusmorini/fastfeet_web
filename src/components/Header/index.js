@@ -26,6 +26,13 @@ export default function Header() {
     },
   ];
 
+  /**
+   *  split para retornar sempre o path antes do _ nas rotas internas
+   *  por exeplo deliveryman_add
+   *  para manter ativo o menu entregadores
+   */
+  const pathname = location.pathname.split("_");
+
   return (
     <Container>
       <Content>
@@ -34,7 +41,7 @@ export default function Header() {
         </Logo>
         <Menu>
           {menu.map((m) => (
-            <ItemMenu index={m.to} active={m.to === location.pathname && true}>
+            <ItemMenu key={m.to} active={pathname[0] === m.to && true}>
               <Link to={m.to}>{m.name}</Link>
             </ItemMenu>
           ))}

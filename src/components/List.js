@@ -21,7 +21,7 @@ export function ListAvatar(props) {
 }
 
 ListAvatar.defaultProps = {
-  src: "/img/default-avatar.jpg"
+  src: "/img/default-avatar.jpg",
 };
 
 export function Status(props) {
@@ -44,7 +44,7 @@ const ListRowContent = styled.li`
   font-size: 16px;
   margin-bottom: 10px;
 
-  ${props =>
+  ${(props) =>
     props.title &&
     css`
       font-weight: bold;
@@ -57,31 +57,31 @@ const ListItemContent = styled.span`
   width: 100%;
   padding: 0 10px;
 
-  ${props =>
+  ${(props) =>
     props.upper &&
     css`
       text-transform: uppercase;
     `}
 
-  ${props =>
+  ${(props) =>
     props.low &&
     css`
       text-transform: lowercase;
     `};
 
-  ${props =>
+  ${(props) =>
     props.size &&
     css`
       width: ${props.size + "px"};
     `}
 
-  ${props =>
+  ${(props) =>
     props.align &&
     css`
       text-align: ${props.align};
     `}
   
-  ${props =>
+  ${(props) =>
     props.flex &&
     css`
       display: flex;
@@ -114,21 +114,21 @@ const StatusContent = styled.span`
   color: #c1bc35;
   background: #f0f0df;
 
-  ${props =>
+  ${(props) =>
     props.type === "entregue" &&
     css`
       color: #2ca42b;
       background: #dff0df;
     `};
 
-  ${props =>
+  ${(props) =>
     props.type === "cancelada" &&
     css`
       color: #de3b3b;
       background: #fab0b0;
     `};
 
-  ${props =>
+  ${(props) =>
     props.type === "retirada" &&
     css`
       color: #4d85ee;

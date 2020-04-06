@@ -114,7 +114,7 @@ export default function Orders() {
       </SubMenu>
 
       <ListContainer>
-        <ListRow title>
+        <ListRow title="true">
           <ListItem size="300"> ID</ListItem>
           <ListItem>Destinatário</ListItem>
           <ListItem>Entregador</ListItem>
@@ -132,8 +132,6 @@ export default function Orders() {
           orders.map((order) => {
             let status = "pendente";
             let url_avatar = "/img/default-avatar.jpg";
-
-            console.log(stateUF("pr"));
 
             const estado = stateUF(order.recipient.state);
 
@@ -154,7 +152,7 @@ export default function Orders() {
             }
 
             return (
-              <ListRow>
+              <ListRow key={order.id}>
                 <ListItem size="300">{order.id}</ListItem>
                 <ListItem>{order.recipient.name}</ListItem>
                 <ListItem flex>
